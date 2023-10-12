@@ -1,0 +1,150 @@
+/* Estilos generales */
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #616060;
+  padding: 20px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.header-box {
+  display: flex;
+  align-items: center;
+}
+
+.logo-web {
+  width: 120px;
+}
+
+.close-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.close-btn i {
+  font-size: 24px;
+}
+
+.sidebar ul {
+  padding-left: 0;
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+.sidebar ul li a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.sidebar ul li.active a {
+  font-weight: bold;
+}
+
+.content nav {
+  background-color: #7c7c7c;
+  padding: 10px;
+}
+
+.content .logo-mob {
+  width: 80px;
+}
+
+.dashboard-content {
+  background-color: #727171;
+  padding: 20px;
+}
+
+.card {
+  background-color: rgb(211, 211, 211);
+  border: 1px solid #c5c1c1;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar elementos horizontalmente */
+  justify-content: center; /* Centrar elementos verticalmente */
+  margin-top: 15px;
+}
+
+.custom-input {
+  width: 500px; /* Modificamos el ancho al 80% */
+  max-width: 200px; /* Establecemos un ancho máximo */
+  text-align: center; /* Centramos el texto dentro del input */
+  padding: 5px; /* Aumentar el relleno para mejorar la apariencia */
+  margin-bottom: 20px;
+}
+
+.horario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px; /* Espaciado entre la tarjeta y el contenido */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+}
+
+.titulo {
+  color: rgb(255, 255, 255);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .content {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    margin-top: 20px;
+  }
+  
+  .custom-input {
+    width: 100%;
+    max-width: none; /* Eliminamos el ancho máximo en pantallas pequeñas */
+  }
+
+  .align-center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .titulo {
+    color: rgb(0, 0, 0);
+  }
+  
+  .horario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+  }
+}

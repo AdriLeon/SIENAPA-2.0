@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generar Nuevo Pozo</title>
+  <link rel="icon" href="/static/img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/generar-pozos.css">
+</head>
+
+<body>
+  <div class="main-container d-flex">
+    <div class="sidebar" id="side_nav">
+      <div class="header-box justify-content-between px-2 pt-3 pb-4 d-flex">
+        <img class="logo-web" src="/static/img/logo.png" />
+        <button class="btn d-md-none d-block close-btn me-2"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <ul class="list-unstyled px-2">
+        <li class="active"><a href="/admin/lista-pozos" class="text-decoration-none px-3 py-2 d-block">Pozos</a></li>
+        <li class=""><a href="/admin/control-pozo" class="text-decoration-none px-3 py-2 d-block">Control Remoto</a></li>
+        <li class=""><a href="/admin/lista-usuarios" class="text-decoration-none px-3 py-2 d-block">Usuarios</a></li>
+        <li class=""><a href="/admin/generar-reporte" class="text-decoration-none px-3 py-2 d-block">Reportes</a></li>
+        <li class="salir"><a href="/logout" class="text-decoration-none px-3 py-2 d-block">Salir</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="d-flex justify-content-between d-md-none d-block">
+            <button class="btn px-1 py-0 open-btn me-2"><i class="bi bi-list"></i></button>
+          </div>
+          <div>
+            <img class="logo-mob" src="/static/img/logo.png" />
+          </div>
+        </div>
+      </nav>
+      <div class="dashboard-content px-3 pt-4">
+        <!-- Aqui va el contenido -->
+        <div class="formulario">
+          <h1 class="titulo">Generar nuevo pozo</h1>
+          <form method="POST">
+            <div class="input-container">
+              <label for="nombre">Nombre del pozo:</label>
+              <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="input-container">
+              <label for="ubicacion">Ubicación del pozo:</label>
+              <input type="text" id="ubicacion" name="ubicacion" required>
+            </div>
+
+            <div class="input-container">
+              <label for="concesion">Concesión (CONAGUA) del pozo:</label>
+              <input type="text" id="concesion" name="concesion" required>
+            </div>
+
+            <div class="input-container">
+              <label for="convenio">Convenio (CFE) del pozo:</label>
+              <input type="text" id="convenio" name="convenio" required>
+            </div>
+
+            <div class="input-container grande">
+              <label for="informacion">Información extra del pozo:</label>
+              <input type="text" id="informacion" name="informacion">
+            </div>
+
+            <button type="submit" class="boton-guardar">Guardar</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Scripts Menu -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script>
+    $('.open-btn').click(function () {
+      $('.sidebar').addClass('active');
+    });
+    $('.close-btn').click(function () {
+      $('.sidebar').removeClass('active');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+$def with (mensaje)
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Usuario</title>
+  <link rel="icon" href="/static/img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/agregar_usuario.css">
+</head>
+
+<body>
+  <div class="main-container d-flex">
+    <div class="sidebar" id="side_nav">
+      <div class="header-box justify-content-between px-2 pt-3 pb-4 d-flex">
+        <img class="logo-web" src="/static/img/logo.png" />
+        <button class="btn d-md-none d-block close-btn me-2"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <ul class="list-unstyled px-2">
+        <li class="active"><a href="/informatica/agregar-usuario" class="text-decoration-none px-3 py-2 d-block">Agregar
+            Usuario</a></li>
+        <li class=""><a href="/informatica/modificar-usuario"" class=" text-decoration-none px-3 py-2 d-block">Modificar
+            Usuario</a></li>
+        <li class="salir"><a href="/logout" class="text-decoration-none px-3 py-2 d-block">Salir</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="d-flex justify-content-between d-md-none d-block">
+            <button class="btn px-1 py-0 open-btn me-2"><i class="bi bi-list"></i></button>
+          </div>
+          <div>
+            <img class="logo-mob" src="/static/img/logo.png" />
+          </div>
+        </div>
+      </nav>
+      <div class="dashboard-content px-3 pt-4">
+        <!-- Aqui va el contenido -->
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <div class="d-flex">
+            <h1 class="titulo">Agregar Usuario</h1>
+          </div>
+          <form class="row g-3 justify-content-evenly" method="post">
+            <div class="row g-3 justify-content-evenly">
+              <div class="col-md-4">
+                <label for="inputEmail4" class="form-label">Correo Electrónico</label>
+                <input type="email" placeholder="correo@email.com" class="form-control" name="inputEmail14">
+              </div>
+              <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">No. Control</label>
+                <input type="number" placeholder="501" class="form-control" name="inputControl14">
+              </div>
+            </div>
+            <div class="row g-3 justify-content-evenly">
+              <div class="col-md-4 align-items-">
+                <label for="inputAddress" class="form-label">Nivel</label><br>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-evenly">
+                  <button type="submit" class="btn admin" data-bs-toggle="button"
+                    value="administrador">Administrador</button>
+                  <button type="submit" class="btn operador" data-bs-toggle="button" value="operador">Operador</button>
+                  <input type="hidden" id="boton-valor" name="nivel" value="">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="inputAddress2" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="inputPassword14" placeholder="********">
+              </div>
+            </div>
+            <div class="row g-5 justify-content-center">
+              <div><button type="submit" class="btn-submit" id="agregar">Agregar Usuario</button></div>
+              $if mensaje is not None:
+              <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="20" fill="currentColor"
+                  class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z">
+                  </path>
+                </svg>
+                <div>
+                  $mensaje
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts Menu -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../../static/js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script>
+  </script>
+</body>
+
+</html>

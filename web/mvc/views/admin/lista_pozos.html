@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Pozos</title>
+  <link rel="icon" href="/static/img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/lista_pozos.css">
+  <script src="/static/js/card.js"></script>
+</head>
+
+<body>
+  <div class="main-container d-flex">
+    <div class="sidebar" id="side_nav">
+      <div class="header-box justify-content-between px-2 pt-3 pb-4 d-flex">
+        <img class="logo-web" src="/static/img/logo.png" />
+        <button class="btn d-md-none d-block close-btn me-2"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <ul class="list-unstyled px-2">
+        <li class="active"><a href="/admin/lista-pozos" class="text-decoration-none px-3 py-2 d-block">Pozos</a></li>
+        <li class=""><a href="/admin/control-pozo" class="text-decoration-none px-3 py-2 d-block">Control Remoto</a></li>
+        <li class=""><a href="/admin/lista-usuarios" class="text-decoration-none px-3 py-2 d-block">Usuarios</a></li>
+        <li class=""><a href="/admin/generar-reporte" class="text-decoration-none px-3 py-2 d-block">Reportes</a></li>
+        <li class="salir"><a href="/logout" class="text-decoration-none px-3 py-2 d-block">Salir</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="d-flex justify-content-between d-md-none d-block">
+            <button class="btn px-1 py-0 open-btn me-2"><i class="bi bi-list"></i></button>
+          </div>
+          <div>
+            <img class="logo-mob" src="/static/img/logo.png" />
+          </div>
+        </div>
+      </nav>
+
+      <div class="dashboard-content px-3 pt-4">
+        <h1 class="titulo">Lista de Pozos</h1>
+        <a class="btn btn-primary generar" href="/admin/generar-pozo" role="button">Generar nuevo Pozo</a>
+        <div class="container-flip-card" id="container-flip-card-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts Menu -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="../../../static/js/scripts.js"></script>
+  <script>
+      function flipCard(id) {
+        var flipCard = document.querySelector("." + id);
+        flipCard.classList.toggle('flipped');
+      }
+    </script>
+    <script>
+      window.onload = function () {
+        addCard();
+      };
+    </script>
+    <script>
+      function powerClick(id) {
+        var key = id;
+        var firebase = "https://sienapa-734e9-default-rtdb.firebaseio.com/data/pozos/";
+        var json = "/estado_pozo/";
+        var end = ".json";
+        var url = firebase + key + json + end;
+
+        console.log(url);
+
+        const request = new XMLHttpRequest();
+
+        request.onload = function () {
+          if (request.status >= 200 && request.status < 300) {
+            const data = JSON.parse(request.responseText);
+            const currentState = data.estado;
+            const newState = currentState === "Encendido" ? "Apagado" : "Encendido";
+
+            const updateData = {
+              "estado": newState
+            };
+
+            const updateString = JSON.stringify(updateData);
+
+            const updateRequest = new XMLHttpRequest();
+
+            updateRequest.onload = function () {
+              if (updateRequest.status >= 200 && updateRequest.status < 300) {
+                console.log("Estado actualizado con éxito:", newState);
+                //location.reload();
+                document.getElementById(key).value = newState;
+                // Aquí puedes realizar cualquier acción adicional que desees después de actualizar el estado en la base de datos.
+              } else {
+                console.error("Error al actualizar el estado:", updateRequest.status, updateRequest.responseText);
+              }
+            };
+
+            updateRequest.open("PATCH", url);
+            updateRequest.send(updateString);
+
+            // Mostrar solo el valor del estado en la consola
+            console.log("Nuevo estado:", newState);
+          } else {
+            console.error("Error al obtener el estado actual:", request.status, request.responseText);
+          }
+        };
+
+        request.open("GET", url);
+        request.send();
+      }
+    </script>
+</body>
+</html>

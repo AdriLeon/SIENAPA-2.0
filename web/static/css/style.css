@@ -1,0 +1,99 @@
+body {
+    background-image: url('/static/img/fondo.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff
+}
+  
+
+/* Estilos Menu */
+
+  /*CODIGOS DE COLORES
+  #D4D4D4 fondo menu
+#E5007E color rosa
+#71B530 color verde
+#E8E8E8 fondo tarjetas
+  */
+  #side_nav {
+    background: #D4D4D4;
+    min-width: 250px;
+    max-width: 250px;
+    transition: all 0.3s;
+    text-align: center;
+    /*height: 100%;
+    position: fixed;*/
+  }
+
+  .logo-web {
+    min-width: 200px;
+    max-width: 250px;
+  }
+
+  .content {
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  ul {
+    margin-top: 30px;
+  }
+
+  .sidebar li.active {
+    background: #E5007E;
+    border-radius: 8px;
+    margin-bottom: 30px;
+  }
+
+  .sidebar li.active a,
+  .sidebar li a:hover {
+    color: #000;
+    margin-bottom: 30px;
+  }
+
+  .sidebar li a {
+    color: #000;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .salir {
+    margin-top: 33vh;
+  }
+
+  @media (max-width: 767px) {
+    body {
+      background-image: none;
+      background-color: #bebebe;
+      color: #000;
+    }
+
+    .navbar {
+      display: block;
+    }
+
+    #side_nav {
+      margin-left: -250px;
+      position: fixed;
+      min-height: 100vh;
+      z-index: 1;
+    }
+
+    #side_nav.active {
+      margin-left: 0;
+    }
+
+    .logo-web {
+      display: none;
+    }
+
+    .logo-mob {
+      min-width: 100px;
+      max-width: 150px;
+    }
+  }

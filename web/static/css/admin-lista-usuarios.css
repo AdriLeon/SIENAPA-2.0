@@ -1,0 +1,131 @@
+.titulo {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 100px;
+  }
+  
+  .container {
+    color: white;
+    text-align: center;
+  }
+  
+  .row-titulo {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 600px;
+  }
+  
+  .row {
+    margin-bottom: 10px;
+  }
+
+  .user_row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 60vh;
+  flex-wrap: wrap; /* Esta propiedad hará que los elementos se distribuyan en varias filas */
+}
+
+.list-group {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.list-group-item {
+  margin-bottom: 15px;
+  height: 60px;
+}
+  
+  .list-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    list-style: none;
+    font-size: 15px;
+    flex-wrap: nowrap;
+    margin: 0;
+  }
+  
+  .list-inline-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: black;
+  }
+
+  .modal-title{
+    color: black;
+  }
+  
+  .style-list {
+    background-color: transparent;
+    border-bottom-color: #FFF;
+    color: #FFF;
+  }
+  
+  .text-bg-secondary {
+    background-color: #848484 !important;
+  }
+  
+  .scroll-container {
+    max-height: 300px;
+    overflow-y: auto; 
+  }
+  
+  .testimonial-card .card-up {
+    height: 120px;
+    overflow: hidden;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+  
+  .testimonial-card .avatar {
+    width: 110px;
+    margin-top: -60px;
+    overflow: hidden;
+    border: 3px solid #fff;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 991px) {
+    .col-lg-6 {
+      margin-top: 20px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .row-titulo {
+      width: 100%;
+    }
+    
+    .list-group {
+      width: 100%;
+    }
+    
+    .list-inline {
+      flex-direction: row;
+      align-items: center;
+      overflow-x: auto; 
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .list-inline-item {
+      flex-shrink: 0; 
+      margin-right: 10px;
+    }
+
+    .scroll-container {
+        max-height: none;
+    }
+
+      .col-lg-6 {
+        margin-top: 0;
+    }
+  }
+  

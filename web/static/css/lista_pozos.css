@@ -1,0 +1,101 @@
+input {
+  border: 0;
+  width: 7em;
+  text-align: center;
+}
+
+.generar{
+  margin-bottom: 15px;
+}
+
+.titulo {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.content_cards {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  width: 80%;
+  height: 600px;
+  display: flex;
+  margin: auto;
+  color: #000;
+  padding: 25px;
+}
+
+.container-flip-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  /* Espacio entre cada tarjeta */
+  max-width: 900px;
+  /* Ancho máximo que ocuparán las tarjetas en una línea */
+  margin: 0 auto;
+}
+
+.flip-card {
+  perspective: 1000px;
+  text-align: center;
+  width: calc(33.3333% - 10px); /* Ancho de cada tarjeta (1/3 del ancho total con espacio entre ellas) */
+  margin-bottom: 180px; /* Espacio entre cada tarjeta */
+}
+
+.flip-card-inner {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+}
+
+.flip-card-back {
+  background-color: #ccc;
+  transform: rotateY(180deg);
+}
+
+.icon-switch:before {
+  content: "\e9b6";
+}
+
+.gota {
+  width: 20%;
+  margin: auto;
+  display: flex;
+  padding-bottom: 20px;
+}
+
+/* Estilos para versiones móviles */
+@media screen and (max-width: 767px) {
+  .container-flip-card {
+    flex-direction: column; /* Mostrar tarjetas en vertical */
+    align-items: center; /* Centrar las tarjetas en el eje horizontal */
+  }
+  
+  /* Estilos para cada tarjeta en versión móvil */
+  .flip-card {
+    width: 80%; /* Ancho de las tarjetas */
+    margin-bottom: 150px; /* Espacio entre cada tarjeta */
+  }
+}
+
+
+  
