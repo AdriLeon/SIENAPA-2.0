@@ -78,6 +78,7 @@ class ElevatedCardExample extends StatelessWidget {
                   child: Icon(Icons.power_settings_new, color: Colors.white, size: 30,)
                 ),
               ),
+              SizedBox(height: 15,),
               DialogExample()
             ],
           ),
@@ -110,9 +111,7 @@ class DialogExample extends StatelessWidget {
           ],
         ),
       ),
-      child: const Text('Informacion del pozo'),
+      child: const Text('Informacion del pozo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
     );
   }
 }
-
-
