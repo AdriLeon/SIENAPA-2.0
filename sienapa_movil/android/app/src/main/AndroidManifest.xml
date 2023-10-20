@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="sienapa_movil"
+        android:label="SIENAPA"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
