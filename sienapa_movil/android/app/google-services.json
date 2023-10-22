@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "538109518725",
+    "firebase_url": "https://sienapa-734e9-default-rtdb.firebaseio.com",
+    "project_id": "sienapa-734e9",
+    "storage_bucket": "sienapa-734e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538109518725:android:e4b4324f665e4dd2ed5aec",
+        "android_client_info": {
+          "package_name": "com.example.sienapa_movil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538109518725-dv6jv3eonj5bpiclhl8r6f9nia7u9pq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe3IoJZnrY-sUNV4jTyEYfTUpM-whYJi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538109518725-6e5pc33rdahf99jlb05i13aa4lk94sro.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "538109518725-60573m1pf302tuk31bco7sh6anqlbjlc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sienapa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
