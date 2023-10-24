@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:developer';
+import 'package:sienapa_movil/Constants/auth_constants.dart';
 
 
 class ListaPozos extends StatelessWidget {
+  const ListaPozos ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,11 @@ class ListaPozos extends StatelessWidget {
           SizedBox(height: 30,),
           Center(
             child: ElevatedCardExample(),
-            )
+            ),
+          SizedBox(height: 30,),
+          ElevatedButton(onPressed: (){
+            authController.signOut();
+          }, child: Text("Sign Out"))
           ,
         ]
       ),
@@ -79,7 +85,8 @@ class ElevatedCardExample extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15,),
-              DialogExample()
+              DialogExample(),
+
             ],
           ),
         ),
