@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sienapa_movil/UI/login.dart';
+import 'package:sienapa_movil/UI/SplashPage.dart';
 
 void main() {
   runApp(GetMaterialApp(
@@ -8,7 +8,7 @@ void main() {
     initialRoute: '/Home',
     defaultTransition: Transition.fade,
     getPages: [
-      GetPage(name: '/Home', page: () => Login()),
+      GetPage(name: '/Home', page: () => SplashPage()),
     ],
   ));
 }
