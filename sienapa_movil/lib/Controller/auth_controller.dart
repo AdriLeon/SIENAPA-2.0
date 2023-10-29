@@ -1,10 +1,9 @@
-import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sienapa_movil/Constants/auth_constants.dart';
+import 'package:sienapa_movil/UI/home_page.dart';
 import 'package:sienapa_movil/UI/login.dart';
 import 'package:sienapa_movil/UI/lista_pozos.dart';
 
@@ -30,7 +29,7 @@ class AuthController extends GetxController{
       Get.offAll(()=>const Login());
     }
     else{
-      Get.offAll(()=>const ListaPozos());
+      Get.offAll(()=> HomePage());
     }
   }
 
