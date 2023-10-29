@@ -18,7 +18,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xffE5E5E5),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -112,6 +111,7 @@ class _LoginState extends State<Login> {
               ),
             ],
           ),
-        ));
+        ),
+    );
   }
 }

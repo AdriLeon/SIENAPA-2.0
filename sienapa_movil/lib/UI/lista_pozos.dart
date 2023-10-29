@@ -4,15 +4,14 @@ import 'dart:developer';
 import 'package:sienapa_movil/Constants/auth_constants.dart';
 
 
-class ListaPozos extends StatelessWidget {
+class ListaPozos extends GetView {
   const ListaPozos ({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Lista de Pozos'),
-        backgroundColor: const Color(0xFF599EAC),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -46,8 +45,8 @@ class ElevatedCardExample extends StatelessWidget {
     return Center(
       child: Card(
         child: SizedBox(
-          width: 300,
-          height: 300,
+          width: MediaQuery.of(context).size.width * 0.75,
+          height: MediaQuery.of(context).size.height * 0.35,
           child: Column(
             children: [
               SizedBox(height: 20,),
