@@ -4,6 +4,7 @@ import 'package:sienapa_movil/Constants/auth_constants.dart';
 import 'package:sienapa_movil/Controller/HomeController.dart';
 import 'package:sienapa_movil/Controller/auth_controller.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:sienapa_movil/UI/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,23 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          useMaterial3: true,
-          brightness: Brightness.light,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF518DC3),
-          ),
-          scaffoldBackgroundColor: const Color(0xFFE5E5E5)
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF152B3E),
-        ),
-        scaffoldBackgroundColor: const Color(0xFF4D4D4D),
-        cardColor: const Color(0xFF898989),
-      ),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
       title: 'Flutter Demo',
       // we don't really have to put the home page here
