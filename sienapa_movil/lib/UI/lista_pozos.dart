@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:developer';
 import 'package:sienapa_movil/Constants/auth_constants.dart';
-
+import 'package:sienapa_movil/UI/theme.dart';
 
 class ListaPozos extends GetView {
   const ListaPozos ({super.key});
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Scaffold(
+      backgroundColor: customColors.backgroundColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text('Lista de Pozos'),
@@ -42,6 +43,7 @@ class ElevatedCardExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Center(
       child: Card(
         child: SizedBox(
@@ -76,7 +78,7 @@ class ElevatedCardExample extends StatelessWidget {
                 child: MaterialButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => ListaPozos() ));
                 },
-                  color: Colors.greenAccent,
+                  color: customColors.buttonColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -85,7 +87,6 @@ class ElevatedCardExample extends StatelessWidget {
               ),
               SizedBox(height: 15,),
               DialogExample(),
-
             ],
           ),
         ),
