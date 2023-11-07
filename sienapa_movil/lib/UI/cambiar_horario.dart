@@ -12,7 +12,6 @@ class CambiarHorario extends StatelessWidget {
       ),
       body:
       const CheckDiaHora(),
-      //const SelectTime(),
     );
   }
 }
