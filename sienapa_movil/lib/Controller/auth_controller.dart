@@ -39,7 +39,7 @@ class AuthController extends GetxController{
       Get.offAll(()=>const Login());
     }
     else{
-      Get.offAll(()=>const ListaPozos());
+      Get.offAll(()=>const ());
     }
   }
 
