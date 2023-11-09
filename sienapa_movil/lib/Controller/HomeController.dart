@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sienapa_movil/UI/control-pozo.dart';
+import 'package:sienapa_movil/UI/generar_reporte.dart';
 import 'package:sienapa_movil/UI/lista_pozos.dart';
 import 'package:sienapa_movil/UI/usuarios.dart';
 
@@ -30,7 +32,7 @@ class HomeController extends GetxController {
     if(settings.name == '/ControlRemoto'){
       return GetPageRoute(
         settings: settings,
-        page: () => ListaPozos(),
+        page: () => ControlPozoPage(),
       );
     }
     if(settings.name == '/Usuarios'){
@@ -42,7 +44,7 @@ class HomeController extends GetxController {
     if(settings.name == '/Reportes'){
       return GetPageRoute(
         settings: settings,
-        page: () => ListaPozos(),
+        page: () => GenerarReportePage(),
       );
     }
     if(settings.name == '/CerrarSesion'){
