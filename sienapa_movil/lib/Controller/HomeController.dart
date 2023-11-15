@@ -5,6 +5,8 @@ import 'package:sienapa_movil/UI/generar_reporte.dart';
 import 'package:sienapa_movil/UI/lista_pozos.dart';
 import 'package:sienapa_movil/UI/usuarios.dart';
 
+import '../UI/logout.dart';
+
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
   var currentIndex = 0.obs;
@@ -50,7 +52,7 @@ class HomeController extends GetxController {
     if(settings.name == '/CerrarSesion'){
       return GetPageRoute(
         settings: settings,
-        page: () => ListaPozos(),
+        page: () => const LogoutDialog(),
       );
     }
   }

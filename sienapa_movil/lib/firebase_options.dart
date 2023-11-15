@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,9 +46,19 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDSNosUdU1keJfy1LiUWLRHt28xMvFolXo',
+    appId: '1:538109518725:web:cc5781087804a219ed5aec',
+    messagingSenderId: '538109518725',
+    projectId: 'sienapa-734e9',
+    authDomain: 'sienapa-734e9.firebaseapp.com',
+    databaseURL: 'https://sienapa-734e9-default-rtdb.firebaseio.com',
+    storageBucket: 'sienapa-734e9.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDe3IoJZnrY-sUNV4jTyEYfTUpM-whYJi8',
-    appId: '1:538109518725:android:e4b4324f665e4dd2ed5aec',
+    appId: '1:538109518725:android:67682d8168be68eced5aec',
     messagingSenderId: '538109518725',
     projectId: 'sienapa-734e9',
     databaseURL: 'https://sienapa-734e9-default-rtdb.firebaseio.com',
@@ -60,11 +67,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAE2ktYvoAobfm6yvfLZu3srVGJ7wN5-UU',
-    appId: '1:538109518725:ios:026ce5a379b46459ed5aec',
+    appId: '1:538109518725:ios:f6fc4bd3d3d3171ced5aec',
     messagingSenderId: '538109518725',
     projectId: 'sienapa-734e9',
     databaseURL: 'https://sienapa-734e9-default-rtdb.firebaseio.com',
     storageBucket: 'sienapa-734e9.appspot.com',
+    androidClientId: '538109518725-jrtba6o7kupu062ed15j9h0nev9kppdi.apps.googleusercontent.com',
     iosClientId: '538109518725-kis5a6pmoksq5iv1pu61duq1lef3rusu.apps.googleusercontent.com',
     iosBundleId: 'com.example.sienapaMovil',
   );
