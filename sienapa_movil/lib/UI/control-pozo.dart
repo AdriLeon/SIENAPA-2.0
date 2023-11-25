@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sienapa_movil/Controller/HorarioController.dart';
+import 'package:sienapa_movil/Model/HorarioModel.dart';
 import 'cambiar_horario.dart';
 
-
-const List<String> list = <String>['Pozo 1', 'Pozo 2', 'Pozo 3', 'Pozo 4'];
+String? dropdownValue;
+var estado = 'Apagado';
+bool light = false;
 
 class ControlPozoPage extends StatelessWidget {
   const ControlPozoPage({super.key});
@@ -34,7 +38,7 @@ class ControlPozoPage extends StatelessWidget {
                     const SizedBox(height: 8.0),
                     const DropdownList(),
                     const SizedBox(height: 8.0),
-                    const SwitchObject(),
+                    SwitchObject(estado: estado!),
                     const SizedBox(height: 8.0),
                     TextButton(
                       onPressed: () {
@@ -66,36 +70,68 @@ class DropdownList extends StatefulWidget {
 }
 
 class _DropdownListState extends State<DropdownList> {
-  String dropdownValue = list.first;
+
+  HorarioController horarioController = Get.put(HorarioController());
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      items: list.map((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
+    return GetBuilder(
+      init: HorarioController(),
+      initState: (_) {
+        horarioController.getData();
+      },
+      builder: (horarioController) {
+        print('Nombre: $dropdownValue Estado: $estado');
+        return DropdownButton<String>(
+          value: dropdownValue,
+          items: horarioController.horariolist.map((HorarioModel value) {
+            return DropdownMenuItem<String>(
+              value: value.nombre,
+              child: Text(value.nombre!),
+            );
+          }).toList(),
+          onChanged: (String? newValue) {
+            setState(() {
+               dropdownValue = newValue!;
+            });
+            horarioController.horariolist.forEach((element) {
+              if (element.nombre == dropdownValue) {
+                estado = element.estado!;
+                print(estado);
+              }
+            });
+          },
         );
-      }).toList(),
-      onChanged: (String? newValue) {
-        setState(() {
-          dropdownValue = newValue!;
-        });
       },
     );
+    // return DropdownButton<String>(
+    //   value: dropdownValue,
+    //   items: list.map((String value) {
+    //     return DropdownMenuItem<String>(
+    //       value: value,
+    //       child: Text(value),
+    //     );
+    //   }).toList(),
+    //   onChanged: (String? newValue) {
+    //     setState(() {
+    //       dropdownValue = newValue!;
+    //     });
+    //   },
+    // );
   }
 }
 
 class SwitchObject extends StatefulWidget {
-  const SwitchObject({super.key});
-
+  const SwitchObject({super.key, required this.estado});
+  final String estado;
   @override
-  State<SwitchObject> createState() => _SwitchObjectState();
+  State<SwitchObject> createState() => _SwitchObjectState(estado);
 }
 
 class _SwitchObjectState extends State<SwitchObject> {
-  bool light = true;
+
+  _SwitchObjectState(this.estado);
+  String? estado;
 
   @override
   Widget build(BuildContext context) {
@@ -110,3 +146,4 @@ class _SwitchObjectState extends State<SwitchObject> {
     );
   }
 }
+

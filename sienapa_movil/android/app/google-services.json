@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "538109518725-7lt6qft8b31nra055i62aafobab6ps16.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sienapa_movil",
+            "certificate_hash": "e422728555583f979089a01b7097bbb76f26ce02"
+          }
+        },
+        {
           "client_id": "538109518725-dv6jv3eonj5bpiclhl8r6f9nia7u9pq7.apps.googleusercontent.com",
           "client_type": 3
         }

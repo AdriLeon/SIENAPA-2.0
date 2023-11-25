@@ -72,7 +72,7 @@ class DefaultFirebaseOptions {
     projectId: 'sienapa-734e9',
     databaseURL: 'https://sienapa-734e9-default-rtdb.firebaseio.com',
     storageBucket: 'sienapa-734e9.appspot.com',
-    androidClientId: '538109518725-jrtba6o7kupu062ed15j9h0nev9kppdi.apps.googleusercontent.com',
+    androidClientId: '538109518725-7lt6qft8b31nra055i62aafobab6ps16.apps.googleusercontent.com',
     iosClientId: '538109518725-kis5a6pmoksq5iv1pu61duq1lef3rusu.apps.googleusercontent.com',
     iosBundleId: 'com.example.sienapaMovil',
   );

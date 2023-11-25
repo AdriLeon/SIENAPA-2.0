@@ -1,135 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sienapa_movil/Controller/UsuariosController.dart';
+import 'package:sienapa_movil/UI/theme.dart';
 
-class Usuarios extends GetView {
-  const Usuarios({Key? key}) : super(key: key);
+class Usuarios extends StatelessWidget {
+  Usuarios({super.key});
+
+  UsuariosController userController = Get.put(UsuariosController());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          automaticallyImplyLeading: false, title: const Text('Usuarios')),
-      body: SingleChildScrollView(
-          child: Container(
-        width: MediaQuery.of(context).size.width,
-        child: DataTable(columns: [
-          const DataColumn(
-              label: SizedBox(
-            width: 30,
-          )),
-          DataColumn(
-              label: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.3,
-            child: const Text(
-              'Correo',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.lightBlue),
-              textAlign: TextAlign.center,
-            ),
-          )),
-          DataColumn(
-            label: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.1,
-              child: const Text(
-                'Nivel',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.lightBlue),
-                textAlign: TextAlign.center,
-              ),
-            ),
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    return GetBuilder<UsuariosController>(
+      init: UsuariosController(),
+      initState: (_) {},
+      builder: (userController) {
+        WidgetsBinding.instance!.addPostFrameCallback((_) {
+          userController.getData();
+        });
+        return Scaffold(
+          backgroundColor: customColors.backgroundColor,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title: const Text('Usuarios'),
+            // backgroundColor: customColors.appBarColor,
           ),
-        ], rows: [
-          DataRow(cells: [
-            DataCell(const Icon(Icons.person), ),
-            DataCell(const Text('operador@sienapa.com')),
-            DataCell(const Text('operador'),),
-          ],
-          onLongPress: ( ){
-            _mostrarDialog(context);
-          },
+          body: Center(
+                child: userController.isLoading.value == true
+                    ? const CircularProgressIndicator(
+                        color: Colors.blue,
+                      )
+                    : Obx(
+                      () => ListView.separated(
+                    itemBuilder: (BuildContext context, index) {
+                      // Verificar si el índice es 0 o si el nivel ha cambiado
+                      bool showHeader = index == 0 ;
+
+                      return Column(
+                        children: [
+                          // Mostrar el encabezado solo si es necesario
+                          if (showHeader)
+                            Container(
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SizedBox(width: 30,height: 50,),
+                                  Text('Correo', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                                  SizedBox(height: 20,),
+                                  Text('Nivel', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                                ],
+                              ),
+                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Icon(Icons.person),
+                              TextButton(
+                                onPressed: () {
+                                  _mostrarDialog(context, userController.usuarioslist[index].logs!);
+                                },
+                                child: Text(userController.usuarioslist[index].email!, style: TextStyle(fontSize: 16),),
+                              ),
+                              Text(userController.usuarioslist[index].nivel!, style: TextStyle(fontSize: 16),),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, index) {
+                      return const SizedBox(
+                        height: 5,
+                      );
+                    },
+                    itemCount: userController.usuarioslist.length,
+                  ),
+                ),
+
           ),
-          DataRow(cells: [
-            DataCell(const Icon(Icons.person), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('operador@sienapa.com'), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('operador'), onTap: (){
-              _mostrarDialog(context);
-            }),
-          ]),
-          DataRow(cells: [
-            DataCell(const Icon(Icons.person), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('administrador@sienapa.com'), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('administrador'), onTap: (){
-              _mostrarDialog(context);
-            }),
-          ]),
-          DataRow(cells: [
-            DataCell(const Icon(Icons.person), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('informatica@sienapa.com'), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('informatica'), onTap: (){
-              _mostrarDialog(context);
-            }),
-          ]),
-          DataRow(cells: [
-            DataCell(const Icon(Icons.person), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('operador@sienapa.com'), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('operador'), onTap: (){
-              _mostrarDialog(context);
-            }),
-          ]),
-          DataRow(cells: [
-            DataCell(const Icon(Icons.person), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('administrador@sienapa.com'), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('administrador'), onTap: (){
-              _mostrarDialog(context);
-            }),
-          ]),
-          DataRow(cells: [
-            DataCell(const Icon(Icons.person), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('informatica@sienapa.com'), onTap: (){
-              _mostrarDialog(context);
-            }),
-            DataCell(const Text('informatica'), onTap: (){
-              _mostrarDialog(context);
-            }),
-          ]),
-        ]),
-      )),
+        );
+      },
     );
   }
 }
 
-void _mostrarDialog(BuildContext context) {
+void _mostrarDialog(BuildContext context, dynamic logs) {
+  String? fecha = '';
+  String? act = '';
+  // crear una lista para agregar los datos
+  List<String> lista = [];
+  logs.forEach((key, value) {
+    fecha = value['fecha'];
+    act = value['actividad'];
+    lista.add('$act - $fecha');
+  });
   showDialog<String>(
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      title: const Text('Información del Usuario'),
-      content: Text('Nivel: Administrador\nCorreo: '),
+      title: const Text('Registro de Actividades'),
+      content: SingleChildScrollView(
+        child: Text(lista.join('\n')),),
       actions: <Widget>[
         TextButton(
           onPressed: () {

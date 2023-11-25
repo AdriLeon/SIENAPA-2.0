@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sienapa_movil/Constants/auth_constants.dart';
 import 'package:sienapa_movil/Controller/PozosController.dart';
 import 'package:sienapa_movil/UI/theme.dart';
-import 'package:sienapa_movil/UI/usuarios.dart'; 
+import 'package:sienapa_movil/Controller/auth_controller.dart';
+import 'package:sienapa_movil/UI/localNoti.dart';
 
 class ListaPozos extends StatelessWidget {
   ListaPozos({super.key});
 
   WordController pozoController = Get.put(WordController());
+  AuthController authController = AuthController.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -160,11 +163,13 @@ class CardExample extends StatelessWidget {
                 height: 40,
                 width: 190,
                 child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Usuarios()));
+                    onPressed: () async {
+                      String? userID = await authController.getToken();
+                      LocalNotification.showSimpleNotification(
+                        title: 'ID',
+                        body: 'El Token almacenado es: $userID',
+                        payLoad: '',
+                      );
                     },
                     color: customColors.buttonColor,
                     shape: RoundedRectangleBorder(
