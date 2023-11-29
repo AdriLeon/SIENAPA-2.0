@@ -25,16 +25,6 @@ class WordController extends GetxController {
         });
       });
       isLoading.value = false;
-      //mostrar id y datos de cada pozo
-      pozoslist.forEach((element) {
-        print(element.id);
-        print(element.nombre);
-        print(element.convenio);
-        print(element.electricidad);
-        print(element.estado);
-        print(element.ubicacion);
-        print(element.informacion);
-      });
     } catch (e) {
       Get.snackbar("Error", e.toString());
     }

@@ -170,7 +170,7 @@ class CardExample extends StatelessWidget {
                       String? userID = await authController.getToken();
                       LocalNotification.showSimpleNotification(
                         title: 'ID',
-                        body: 'El Token almacenado es: $userID',
+                        body: 'El Token almacenado es: $idPozo',
                         payLoad: '',
                       );
                     },

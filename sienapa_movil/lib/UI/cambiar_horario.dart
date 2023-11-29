@@ -61,7 +61,7 @@ class CheckDiaHora extends StatefulWidget {
 }
 
 class _CheckDiaHoraState extends State<CheckDiaHora> {
-  List<bool> _isSelected = [false, false, false, false, false, false, false];
+  final List<bool> _isSelected = [false, false, false, false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,8 @@ class _CheckDiaHoraState extends State<CheckDiaHora> {
                 });
               },
             ),
-            const SelectTime(),
+            const SelectTimeToStart(),
+            const SelectTimeToEnd(),
           ],
         ),
       ),
@@ -148,14 +149,48 @@ class _CheckDiaHoraState extends State<CheckDiaHora> {
   }
 }
 
-class SelectTime extends StatefulWidget {
-  const SelectTime({super.key});
+class SelectTimeToStart extends StatefulWidget {
+  const SelectTimeToStart({super.key});
 
   @override
-  State<SelectTime> createState() => _SelectHoraState();
+  State<SelectTimeToStart> createState() => _SelectHoraState();
 }
 
-class _SelectHoraState extends State<SelectTime> {
+class _SelectHoraState extends State<SelectTimeToStart> {
+  final timeController = TextEditingController();
+
+  @override
+  void dispose() {
+    timeController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      readOnly: true,
+      controller: timeController,
+      decoration: const InputDecoration(hintText: 'Selecciona la hora'),
+      onTap: () async {
+        var time = await showTimePicker(
+            context: context, initialTime: TimeOfDay.now());
+
+        if (time != null) {
+          timeController.text = time.format(context);
+        }
+      },
+    );
+  }
+}
+
+class SelectTimeToEnd extends StatefulWidget {
+  const SelectTimeToEnd({super.key});
+
+  @override
+  _SelectHoraEndState createState() => _SelectHoraEndState();
+}
+
+class _SelectHoraEndState extends State<SelectTimeToStart> {
   final timeController = TextEditingController();
 
   @override

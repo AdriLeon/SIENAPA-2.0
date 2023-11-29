@@ -6,6 +6,7 @@ import 'package:sienapa_movil/UI/lista_pozos.dart';
 import 'package:sienapa_movil/UI/usuarios.dart';
 
 import '../UI/logout.dart';
+import '../UI/reportes_page.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
@@ -46,7 +47,7 @@ class HomeController extends GetxController {
     if(settings.name == '/Reportes'){
       return GetPageRoute(
         settings: settings,
-        page: () => GenerarReportePage(),
+        page: () => ReportesPage(),
       );
     }
     if(settings.name == '/CerrarSesion'){
