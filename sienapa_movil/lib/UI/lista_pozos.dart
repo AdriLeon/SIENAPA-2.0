@@ -171,7 +171,6 @@ class CardExample extends StatelessWidget {
                     // Obtener el ID y el estado actual del pozo
                     String? pozoID = idPozo;
                     String? estadoActual = estadoPozo;
-
                     // Llamar a ListaController para cambiar el estado
                     ListaController().cambiarEstadoPozo(pozoID!, estadoActual!);
                   },
