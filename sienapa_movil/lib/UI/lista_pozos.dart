@@ -29,7 +29,7 @@ class ListaPozos extends StatelessWidget {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               title: const Text('Lista de Pozos'),
-              // backgroundColor: customColors.appBarColor,
+              backgroundColor: customColors.appBarColor,
             ),
             body: Center(
                 child: pozoController.isLoading.value == true
