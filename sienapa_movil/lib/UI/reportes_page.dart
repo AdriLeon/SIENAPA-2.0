@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -48,23 +49,28 @@ class _ReportesPageState extends State<ReportesPage> {
       final reference = storage.ref('/data/reportes/$fileName');
       final fileData = await reference.getData();
 
-      final directory = await getDownloadsDirectory();
-      final filePath = '${directory!.path}/$fileName';
-
-      // Asegurarse de que el archivo tenga la extensión .pdf
       if (!fileName.toLowerCase().endsWith('.pdf')) {
         fileName = '$fileName.pdf';
       }
+
+      final directory = await getDownloadsDirectory();
+      final filePath = '${directory!.path}/$fileName';
 
       final fileToSave = File(filePath);
 
       await fileToSave.writeAsBytes(fileData!);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('File downloaded successfully'),
-        ),
-      );
+          SnackBar(content:
+          Text('File downloaded successfully'),
+            action: SnackBarAction(
+              label: 'Abrir',
+              onPressed: () {
+                openFile(fileToSave.path);
+              },
+            ),
+          ));
+
 
       print('File saved at: $filePath');
     } catch (error) {
@@ -95,5 +101,15 @@ class _ReportesPageState extends State<ReportesPage> {
         },
       ),
     );
+  }
+}
+
+void openFile(String filePath) async {
+  // Asegúrate de manejar el caso en el que el archivo no exista
+  if (await File(filePath).exists()) {
+    // Abre el archivo con la aplicación predeterminada
+    await OpenFile.open(filePath);
+  } else {
+    print('El archivo no existe');
   }
 }
