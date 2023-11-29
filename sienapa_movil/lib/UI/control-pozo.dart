@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sienapa_movil/Controller/HorarioController.dart';
 import 'package:sienapa_movil/Model/HorarioModel.dart';
+import 'package:sienapa_movil/UI/theme.dart';
 import 'cambiar_horario.dart';
 
 String? dropdownValue;
@@ -13,13 +14,12 @@ class ControlPozoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return MaterialApp(
-      theme: ThemeData(
-        textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Roboto'),
-      ),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFF599EAC),
+          backgroundColor: customColors.appBarColor,
           title: const Text('Control de Pozos'),
         ),
         body: Center(

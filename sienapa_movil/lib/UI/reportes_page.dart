@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sienapa_movil/UI/theme.dart';
 
 class ReportesPage extends StatefulWidget {
   const ReportesPage({Key? key}) : super(key: key);
@@ -86,8 +87,13 @@ class _ReportesPageState extends State<ReportesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Scaffold(
-      appBar: AppBar(title: Text('Reportes')),
+      appBar: AppBar(
+        title: const Text('Reportes'),
+        backgroundColor: customColors.appBarColor,
+        automaticallyImplyLeading: false,
+      ),
       body: ListView.builder(
         itemCount: pdfFiles.length,
         itemBuilder: (context, index) {

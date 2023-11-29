@@ -54,14 +54,25 @@ class Usuarios extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              const Icon(Icons.person),
-                              TextButton(
-                                onPressed: () {
-                                  _mostrarDialog(context, userController.usuarioslist[index].logs!);
-                                },
-                                child: Text(userController.usuarioslist[index].email!, style: TextStyle(fontSize: 16),),
+                              Container(
+                                transformAlignment: Alignment.center,
+                                width: 30,
+                                child: const Icon(Icons.person, size: 25)
                               ),
-                              Text(userController.usuarioslist[index].nivel!, style: TextStyle(fontSize: 16),),
+                              Container(
+                                transformAlignment: Alignment.center,
+                                width: 200,
+                                child: TextButton(
+                                  onPressed: () {
+                                    _mostrarDialog(context, userController.usuarioslist[index].logs!);
+                                  },
+                                  child: Text(userController.usuarioslist[index].email!, style: TextStyle(fontSize: 16),),
+                                ),),
+                              Container(
+                                transformAlignment: Alignment.center,
+                                width: 90,
+                                child: Text(userController.usuarioslist[index].nivel!, style: TextStyle(fontSize: 16),),
+                              ),
                             ],
                           ),
                         ],
