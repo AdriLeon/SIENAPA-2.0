@@ -6,6 +6,8 @@ import 'package:sienapa_movil/UI/theme.dart';
 import 'package:sienapa_movil/Controller/auth_controller.dart';
 import 'package:sienapa_movil/UI/localNoti.dart';
 
+import '../Controller/lista_pozos_controller.dart';
+
 class ListaPozos extends StatelessWidget {
   ListaPozos({super.key});
 
@@ -93,7 +95,6 @@ class CardExample extends StatelessWidget {
       child: Card(
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.75,
-          height: MediaQuery.of(context).size.height * 0.35,
           child: Column(
             children: [
               const SizedBox(
@@ -166,23 +167,24 @@ class CardExample extends StatelessWidget {
                 height: 40,
                 width: 190,
                 child: MaterialButton(
-                    onPressed: () async {
-                      String? userID = await authController.getToken();
-                      LocalNotification.showSimpleNotification(
-                        title: 'ID',
-                        body: 'El Token almacenado es: $idPozo',
-                        payLoad: '',
-                      );
-                    },
-                    color: customColors.buttonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: const Icon(
-                      Icons.power_settings_new,
-                      color: Colors.white,
-                      size: 30,
-                    )),
+                  onPressed: () {
+                    // Obtener el ID y el estado actual del pozo
+                    String? pozoID = idPozo;
+                    String? estadoActual = estadoPozo;
+
+                    // Llamar a ListaController para cambiar el estado
+                    ListaController().cambiarEstadoPozo(pozoID!, estadoActual!);
+                  },
+                  color: customColors.buttonColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Icon(
+                    Icons.power_settings_new,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 15,
