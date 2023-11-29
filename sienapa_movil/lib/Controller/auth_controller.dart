@@ -28,7 +28,7 @@ class AuthController extends GetxController {
       Get.offAll(() => const Login());
     } else {
       await _saveTokenAndId();
-      Get.offAll(() => HomePage());
+      Get.offAll(() => const HomePage());
     }
   }
 
@@ -61,11 +61,11 @@ class AuthController extends GetxController {
         e.toString(),
         snackPosition: SnackPosition.TOP,
         backgroundColor: Colors.red[400],
-        margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
+        margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
         borderRadius: 10,
         colorText: Colors.white,
-        animationDuration: Duration(seconds: 1),
-        duration: Duration(milliseconds: 1500),
+        animationDuration: const Duration(seconds: 1),
+        duration: const Duration(milliseconds: 1500),
       );
     }
   }
@@ -81,11 +81,11 @@ class AuthController extends GetxController {
           'Contraseña debil',
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.red[400],
-          margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
+          margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
           borderRadius: 10,
           colorText: Colors.white,
-          animationDuration: Duration(seconds: 1),
-          duration: Duration(milliseconds: 1500),
+          animationDuration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 1500),
         );
       } else if (e.code == 'email-already-in-use') {
         Get.snackbar(
@@ -93,11 +93,11 @@ class AuthController extends GetxController {
           'Correo ya en uso',
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.red[400],
-          margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
+          margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
           borderRadius: 10,
           colorText: Colors.white,
-          animationDuration: Duration(seconds: 1),
-          duration: Duration(milliseconds: 1500),
+          animationDuration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 1500),
         );
       } else if (e.code == 'invalid-email') {
         Get.snackbar(
@@ -105,11 +105,11 @@ class AuthController extends GetxController {
           'Correo invalido',
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.red[400],
-          margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
+          margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
           borderRadius: 10,
           colorText: Colors.white,
-          animationDuration: Duration(seconds: 1),
-          duration: Duration(milliseconds: 1500),
+          animationDuration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 1500),
         );
       }
     }
@@ -127,11 +127,11 @@ class AuthController extends GetxController {
           'Usuario no encontrado',
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.red[400],
-          margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
+          margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
           borderRadius: 10,
           colorText: Colors.white,
-          animationDuration: Duration(seconds: 1),
-          duration: Duration(milliseconds: 1500),
+          animationDuration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 1500),
         );
       } else if (e.code == 'wrong-password') {
         Get.snackbar(
@@ -139,11 +139,11 @@ class AuthController extends GetxController {
           'Contraseña incorrecta',
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.red,
-          margin: EdgeInsets.fromLTRB(10, 30, 10, 0),
+          margin: const EdgeInsets.fromLTRB(10, 30, 10, 0),
           borderRadius: 10,
           colorText: Colors.white,
-          animationDuration: Duration(seconds: 1),
-          duration: Duration(milliseconds: 1500),
+          animationDuration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 1500),
         );
       } else if (e.code == 'invalid-email') {
         Get.snackbar(
@@ -151,11 +151,11 @@ class AuthController extends GetxController {
           'Correo invalido',
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.red,
-          margin: EdgeInsets.fromLTRB(10, 30, 10, 0),
+          margin: const EdgeInsets.fromLTRB(10, 30, 10, 0),
           borderRadius: 10,
           colorText: Colors.white,
-          animationDuration: Duration(seconds: 1),
-          duration: Duration(milliseconds: 1500),
+          animationDuration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 1500),
         );
       }
     }

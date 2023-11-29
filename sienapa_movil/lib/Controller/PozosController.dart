@@ -25,6 +25,9 @@ class WordController extends GetxController {
         });
       });
       isLoading.value = false;
+      pozoslist.forEach((element){
+        print(element.id);
+      });
     } catch (e) {
       Get.snackbar("Error", e.toString());
     }
