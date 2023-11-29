@@ -27,7 +27,7 @@ class ListaPozos extends StatelessWidget {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               title: const Text('Lista de Pozos'),
-              // backgroundColor: customColors.appBarColor,
+              backgroundColor: customColors.appBarColor,
             ),
             body: Center(
                 child: pozoController.isLoading.value == true
@@ -53,6 +53,7 @@ class ListaPozos extends StatelessWidget {
                                   .pozoslist[index].informacion!,
                               ubicacionPozo: pozoController
                                   .pozoslist[index].ubicacion!,
+                              idPozo: pozoController.pozoslist[index].id!,
                             ))),
                       ]);
                     },
@@ -75,12 +76,14 @@ class CardExample extends StatelessWidget {
   final int? electricidadPozo;
   final String? informacionPozo;
   final String? ubicacionPozo;
+  final String? idPozo;
   const CardExample(
       {required this.nombrePozo,
         required this.estadoPozo,
         required this.electricidadPozo,
         required this.informacionPozo,
         required this.ubicacionPozo,
+        required this.idPozo,
         super.key});
 
   @override
@@ -187,6 +190,7 @@ class CardExample extends StatelessWidget {
               DialogExample(
                 informacionPozo: informacionPozo,
                 ubicacionPozo: ubicacionPozo,
+                idPozo: idPozo,
               ),
             ],
           ),
@@ -199,8 +203,9 @@ class CardExample extends StatelessWidget {
 class DialogExample extends StatelessWidget {
   final String? informacionPozo;
   final String? ubicacionPozo;
+  final String? idPozo;
   const DialogExample(
-      {required this.informacionPozo, required this.ubicacionPozo, super.key});
+      {required this.informacionPozo, required this.ubicacionPozo, required this.idPozo, super.key});
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -225,6 +230,13 @@ class DialogExample extends StatelessWidget {
                 ),
                 TextSpan(
                   text: ubicacionPozo,
+                ),
+                const TextSpan(
+                  text: '\nID: ',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                TextSpan(
+                  text: idPozo,
                 ),
               ],
             ),

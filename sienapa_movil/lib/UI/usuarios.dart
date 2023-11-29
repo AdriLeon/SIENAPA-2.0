@@ -23,7 +23,7 @@ class Usuarios extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             title: const Text('Usuarios'),
-            // backgroundColor: customColors.appBarColor,
+            backgroundColor: customColors.appBarColor,
           ),
           body: Center(
                 child: userController.isLoading.value == true
