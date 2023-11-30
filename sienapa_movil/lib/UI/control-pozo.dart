@@ -8,6 +8,8 @@ import 'cambiar_horario.dart';
 String? dropdownValue;
 var estado = 'Apagado';
 bool light = false;
+String? selectedPozoId;
+
 
 class ControlPozoPage extends StatelessWidget {
   const ControlPozoPage({super.key});
@@ -45,7 +47,7 @@ class ControlPozoPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const CambiarHorario(),
+                            builder: (context) => CambiarHorario(pozoId: selectedPozoId),
                           ),
                         );
                       },
@@ -92,7 +94,10 @@ class _DropdownListState extends State<DropdownList> {
           }).toList(),
           onChanged: (String? newValue) {
             setState(() {
-               dropdownValue = newValue!;
+              dropdownValue = newValue!;
+              selectedPozoId = horarioController.horariolist
+                  .firstWhere((element) => element.nombre == dropdownValue)
+                  .id; // Asumiendo que tu modelo HorarioModel tiene una propiedad 'id'
             });
             horarioController.horariolist.forEach((element) {
               if (element.nombre == dropdownValue) {
