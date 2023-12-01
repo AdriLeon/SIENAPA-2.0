@@ -19,16 +19,15 @@ docker volume create webapp
 ```
 5. Crear entorno en el contenedor
 ```
-docker volume create webapp
-docker container run -d -it -v "$PWD":home/web --net=host --name sienapa-web -h SIENAPA --mount source=webapp,target=/app imagen:v1
+docker container run -d -it -v "$PWD":/home/web --net=host --name sienapa-web -h SIENAPA --mount source=webapp,target=/app sienapa-web:v1
 ```
 6. Ejecutar la imagen
 ```
 docker start -i sienapa-web
 ```
-7. Navegar a web y ejecutar el archivo de Python
+7. Ejecutar el archivo de Python
 ```
-cd home/web
+cd /home/web
 python3 app.py
 ```
 8. Para salir **Ctrl + C** >> Escribir **exit y presionar enter** 
