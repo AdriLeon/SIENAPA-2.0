@@ -2,18 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:sienapa_movil/UI/control-pozo.dart';
 import 'package:sienapa_movil/UI/lista_pozos.dart';
-import 'package:sienapa_movil/UI/usuarios.dart';
-import '../UI/logout.dart';
-import '../UI/reportes_page.dart';
+import 'package:sienapa_movil/UI/logout.dart';
+import 'package:sienapa_movil/UI/reportes_page.dart';
 
-class HomeController extends GetxController {
-  static HomeController get to => Get.find();
+class HomeControllerOperador extends GetxController {
+  static HomeControllerOperador get to => Get.find();
   var currentIndex = 0.obs;
 
   final pages = <String> [
     '/ListaPozos',
     '/ControlRemoto',
-    '/Usuarios',
     '/Reportes',
     '/CerrarSesion',
   ];
@@ -34,12 +32,6 @@ class HomeController extends GetxController {
       return GetPageRoute(
         settings: settings,
         page: () => ControlPozoPage(),
-      );
-    }
-    if(settings.name == '/Usuarios'){
-      return GetPageRoute(
-        settings: settings,
-        page: () => Usuarios(),
       );
     }
     if(settings.name == '/Reportes'){

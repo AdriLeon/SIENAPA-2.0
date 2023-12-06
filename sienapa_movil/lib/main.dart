@@ -7,12 +7,15 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:sienapa_movil/UI/localNoti.dart';
 import 'package:sienapa_movil/UI/theme.dart';
 
+import 'Controller/HomeControllerOperador.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocalNotification.init();
   await firebaseInitialization.then((value) {
     Get.put(AuthController());
     Get.put(HomeController());
+    Get.put(HomeControllerOperador());
   });
   FlutterNativeSplash.preserve(widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
   runApp(const MyApp());

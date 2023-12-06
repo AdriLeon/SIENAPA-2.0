@@ -35,9 +35,7 @@ class _LoginState extends State<Login> {
                 child: Form(
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
+
                       const Text(
                         'Inicia Sesion',
                         style: TextStyle(
@@ -72,16 +70,6 @@ class _LoginState extends State<Login> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          //TODO: Eliminar botton de registro
-                          ElevatedButton(
-                            onPressed: () async {
-                              authController.emailRegister(
-                                  _emailController.text.trim(),
-                                  _passwordController.text.trim());
-                            },
-                            child: const Text('Registrarse'),
-                          ),
-                          Padding(padding: EdgeInsets.all(10)),
                           ElevatedButton(
                               onPressed: () async {
                                 authController.emailLogin(
@@ -92,7 +80,7 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 30,
                       ),
                       Container(
                           child: SignInButton(

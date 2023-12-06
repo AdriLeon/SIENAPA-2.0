@@ -9,7 +9,7 @@ class UsuariosController extends GetxController{
   Future<void> getData() async {
     try {
       final ref = FirebaseDatabase.instance.ref();
-      final snapshot = await ref.child('data/usuarios').onValue.listen((event) {
+      final snapshot = await ref.child('data/usuarios').orderByKey().onValue.listen((event) {
         dynamic data = event.snapshot.value;
         usuarioslist.clear();
         data.forEach((key, value) {
@@ -24,6 +24,7 @@ class UsuariosController extends GetxController{
         usuarioslist.forEach((element) {
           print(element.email);
           print(element.nivel);
+          // imprimir cada dato de logs ordenados por fecha
           element.logs.forEach((key, value) {
             print('Correo ${element.email} - Nivel: ${element.nivel} - Logs: ${value['fecha']} - ${value['actividad']}');
           });
