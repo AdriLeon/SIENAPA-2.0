@@ -1,16 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart'; // Importa shared_preferences
 import 'package:sienapa_movil/Constants/auth_constants.dart';
 import 'package:sienapa_movil/UI/home_page.dart';
+import 'package:sienapa_movil/UI/home_page_operador.dart';
 import 'package:sienapa_movil/UI/login.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   late Rx<User?> firebaseUser;
   late Rx<GoogleSignInAccount?> googleSignInAccount;
+  List<dynamic> idList = [];
+  final bool isLoggedIn = false.obs.value;
 
   @override
   void onReady() {
@@ -21,28 +25,112 @@ class AuthController extends GetxController {
     googleSignInAccount.bindStream(googleSignIn.onCurrentUserChanged);
     ever(googleSignInAccount, _setInitialScreenGoogle);
     super.onReady();
+    _getId();
+  }
+
+  _getId() async {
+    final ref = FirebaseDatabase.instance.ref();
+    final usuarios = await ref.child('data/usuarios').get();
+    //guardar los id en una lista
+    dynamic snapshot = usuarios.value;
+    snapshot.forEach((key, value) {
+      idList.add(key);
+    });
+    print('ID List: $idList');
   }
 
   _setInitialScreen(User? user) async {
     if (user == null) {
       Get.offAll(() => const Login());
     } else {
-      await _saveTokenAndId();
-      Get.offAll(() => const HomePage());
+      final id = user.uid;
+      //validar si el id se encuentra en idList
+      if (idList.contains(id)) {
+        print('ID: $id');
+        final ref = FirebaseDatabase.instance.ref();
+        final dataUser = await ref.child('data/usuarios/$id').get();
+        dynamic snapshot = dataUser.value;
+        print('Nivel: ${snapshot['nivel']}');
+        print('Status: ${snapshot['status']}');
+        if (snapshot['status'] == 'activo' &&
+            snapshot['nivel'] == 'administrador') {
+          isLoggedIn.obs.value = true;
+          Get.offAll(() => const HomePage());
+        } else if (snapshot['status'] == 'activo' && snapshot['nivel'] == 'operador') {
+          isLoggedIn.obs.value = true;
+          Get.offAll(() => const HomePageOperador());
+        } else if (snapshot['status'] == 'inactivo') {
+          Get.snackbar(
+            "Cuenta inactiva",
+            "Comunicate con el administrador para activar tu cuenta",
+            snackPosition: SnackPosition.TOP,
+            backgroundColor: Colors.red[400],
+            margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+            borderRadius: 10,
+            colorText: Colors.white,
+            animationDuration: const Duration(seconds: 1),
+            duration: const Duration(milliseconds: 1500),
+          );
+        }
+      }else{
+        signOut();
+        Get.snackbar(
+          "No tienes acceso",
+          "Comunicate con el administrador",
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.red[400],
+          margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+          borderRadius: 10,
+          colorText: Colors.white,
+          animationDuration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 1500),
+        );
+      }
     }
   }
 
-  _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) {
+  _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) async {
     print(googleSignInAccount);
     if (googleSignInAccount != null) {
       Get.offAll(() => const Login());
     } else {
-      Get.offAll(() => const ());
+      final id = googleSignInAccount?.id;
+      if(idList.contains(id)){
+        print('ID: $id');
+        final ref = FirebaseDatabase.instance.ref();
+        final dataUser = await ref.child('data/usuarios/$id').get();
+        dynamic snapshot = dataUser.value;
+        print('Nivel: ${snapshot['nivel']}');
+        print('Status: ${snapshot['status']}');
+        if (snapshot['status'] == 'activo' &&
+            snapshot['nivel'] == 'administrador') {
+          isLoggedIn.obs.value = true;
+          Get.offAll(() => const HomePage());
+        } else if (snapshot['status'] == 'activo' && snapshot['nivel'] == 'operador') {
+          isLoggedIn.obs.value = true;
+          Get.offAll(() => const HomePageOperador());
+        } else if (snapshot['status'] == 'inactivo') {
+          Get.snackbar(
+            "Cuenta inactiva",
+            "Comunicate con el administrador para activar tu cuenta",
+            snackPosition: SnackPosition.TOP,
+            backgroundColor: Colors.red[400],
+            margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+            borderRadius: 10,
+            colorText: Colors.white,
+            animationDuration: const Duration(seconds: 1),
+            duration: const Duration(milliseconds: 1500),
+          );
+        }
+      }else{
+        signOut();
+      }
     }
   }
 
   void signInWithGoogle() async {
     try {
+      await googleSignIn.signIn();
       GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
       if (googleSignInAccount != null) {
         GoogleSignInAuthentication googleSignInAuthentication =
@@ -163,6 +251,7 @@ class AuthController extends GetxController {
 
   void signOut() async {
     await auth.signOut();
+    await googleSignIn.signOut();
   }
 
   Future<void> _saveTokenAndId() async {

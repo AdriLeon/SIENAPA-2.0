@@ -144,7 +144,25 @@ $def with (mensaje)
 
     const errorDiv = document.getElementById('mensaje');
 
+    function getIdUsuarios() {
+      const usuariosRef = ref(db, 'data/usuarios');
+      get(usuariosRef).then((snapshot) => {
+        if (snapshot.exists()) {
+          //agregar el id a la lista de ids
+          snapshot.forEach((childSnapshot) => {
+            id.push(childSnapshot.key);
+          });
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
+
     signInWithGoogle.addEventListener('click', () => {
+      getIdUsuarios();
+      console.log(id);
       const controlInput = document.querySelector('input[name="inputControl14"]');
       const controlInputValue = controlInput.value;
       console.log(controlInputValue);
@@ -199,7 +217,7 @@ $def with (mensaje)
             console.log("Usuario creado");
             document.getElementById("error").style.opacity = "1";
             document.getElementById("mensaje").innerHTML = "Usuario creado";
-          } else if(usuarioExistente === false){
+          } else if(usuarioExistente === true){
             console.log("El usuario ya existe");
             document.getElementById("error").style.opacity = "1";
             document.getElementById("mensaje").innerHTML = "El usuario ya existe";
