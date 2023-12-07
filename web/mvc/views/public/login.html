@@ -15,6 +15,9 @@ $def with (mensaje)
 
 <body>
   <div class="grid-container">
+    <header class="logo-container">
+      <img src="static/img/sienapa.png">
+    </header>
     <div class="custom-grid">
       <div class="custom-col">
         <h1>Inicia Sesión</h1>
@@ -28,7 +31,22 @@ $def with (mensaje)
             <input type="password" class="form-control" name="password" id="password">
           </div>
           <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-          <button type="button" class="btn btn-danger" id="signInWithGoogle">Iniciar Sesión con Google</button>
+          <style>
+            /* Estilo para eliminar el contorno al presionar el botón */
+            .btn:focus,
+            .btn:active,
+            .btn:hover {
+                outline: none;
+                box-shadow: none;
+            }
+        </style>
+        
+        <button type="button" class="btn btn-light" id="signInWithGoogle">
+            <img src="static/img/google.png" alt="Google Logo" style="width: 10%; height: 13%; vertical-align: middle; margin-right: 10px;">
+            Iniciar Sesión con Google
+        </button>
+        
+          
         </form>
       </div>
     </div>
@@ -123,6 +141,22 @@ $def with (mensaje)
   <!-- JavaScript de Bootstrap 5 -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <style>
+    /* Estilos CSS para posicionar los logos */
+    .logo-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container img {
+      width: 20%;
+      /* Ajusta el ancho según tus necesidades */
+      height: auto;
+      margin-bottom: 10px;
+      /* Espacio entre los logos */
+    }
+    
+  </style>
 </body>
 
 </html>

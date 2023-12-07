@@ -1,9 +1,5 @@
 body {
-    background-image: url('/static/img/fondo.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: #fff
+  background-color: #D4D4D4;
 }
   
 
@@ -16,7 +12,7 @@ body {
 #E8E8E8 fondo tarjetas
   */
   #side_nav {
-    background: #D4D4D4;
+    background: #e5e5e5eb;
     min-width: 250px;
     max-width: 250px;
     transition: all 0.3s;
@@ -26,8 +22,8 @@ body {
   }
 
   .logo-web {
-    min-width: 200px;
-    max-width: 250px;
+    min-width: 45%;
+    max-width: 60%;
   }
 
   .content {
@@ -44,7 +40,7 @@ body {
   }
 
   .sidebar li.active {
-    background: #E5007E;
+    background: #518dc3;
     border-radius: 8px;
     margin-bottom: 30px;
   }

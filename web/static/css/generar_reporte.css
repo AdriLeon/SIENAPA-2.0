@@ -14,7 +14,7 @@
   .download-link {
     display: block;
     margin-top: 10px;
-    color: white;
+    color: rgb(0, 0, 0);
   }
   
   .title {
@@ -23,8 +23,8 @@
   }
 
   label{
-    font-size: 14px;
-    color: #fff;
+    font-size: 17px;
+    color: #000 !important;
   }
 
   .col-md-4{
@@ -47,7 +47,7 @@
   }
 
   .title{
-    color: #fff;
+    color: #000000;
   }
 
   @media (max-width: 767px){

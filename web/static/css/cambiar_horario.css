@@ -104,7 +104,10 @@
 }
 
 .titulo {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 100px;
 }
 
 /* Media Queries */
@@ -136,9 +139,6 @@
     justify-content: center;
   }
   
-  .titulo {
-    color: rgb(0, 0, 0);
-  }
   
   .horario {
     display: flex;
