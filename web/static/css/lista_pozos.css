@@ -9,7 +9,7 @@ input {
 }
 
 .titulo {
-  color: white;
+  color: rgb(5, 5, 5);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -64,11 +64,11 @@ input {
 }
 
 .flip-card-front {
-  background-color: #bbb;
+  background-color: #ffffff;
 }
 
 .flip-card-back {
-  background-color: #ccc;
+  background-color: #ffffff;
   transform: rotateY(180deg);
 }
 

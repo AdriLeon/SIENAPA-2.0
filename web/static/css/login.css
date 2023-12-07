@@ -1,9 +1,6 @@
 body{
-    background-image: url('/static/img/fondo_inicio.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: #bebebe;
+    background-color: #e5e5e5;
+   
 }
 
 .grid-container {
