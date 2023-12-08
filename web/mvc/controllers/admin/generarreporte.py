@@ -29,8 +29,7 @@ meses_en_espanol = {
 mes = meses_en_espanol[datetime.now().month]
 count = 0
 total_fallas = 0
-logo = os.path.abspath("static/img/logo.png")
-
+logo = os.path.abspath("static/img/sienapa_extend.png")
 render = web.template.render("mvc/views/admin/") #ruta de las vistas
 
 class GenerarReporte: #clase Index
@@ -54,7 +53,7 @@ class GenerarReporte: #clase Index
         except Exception as e:
             # Manejo de errores en caso de que ocurra una excepción
             return "Ocurrió un error: " + str(e)
-    
+
     def POST(self):
         try:
             cookie = web.cookies().get("localid") #almacena los datos de la cookie
@@ -99,8 +98,8 @@ def generarReporte(fechaInicio, fechaFin, pozos, user, reportes, cookie):
     pdf.add_page()
     pdf.image(logo, 10, 12, 40)
     pdf.set_font('helvetica', '', 12)
-    pdf.cell(0, 10, 'COMISIÓN DE AGUA Y ALCANTARILLADO DEL', border=False, ln=1, align='C')        
-    pdf.cell(0, 2, 'MUNICIPIO DE TULANCINGO DE BRAVO HIDALGO', border=False, ln=1, align='C')
+    pdf.cell(0, 10, 'SISTEMA PARA EL ENCENDIDO Y APAGADO', border=False, ln=1, align='C')        
+    pdf.cell(0, 2, 'DE POZOS DE AGUA', border=False, ln=1, align='C')
     pdf.set_font('helvetica', 'B', 12)
     pdf.cell(0, 20, 'REPORTE DE FALLAS EN POZOS DE AGUA', border=False, align='C')        
     pdf.set_font('helvetica', '', 12)
