@@ -99,7 +99,7 @@ def generarReporte(fechaInicio, fechaFin, pozos, user, reportes, cookie):
     pdf.image(logo, 10, 12, 40)
     pdf.set_font('helvetica', '', 12)
     pdf.cell(0, 10, 'SISTEMA PARA EL ENCENDIDO Y APAGADO', border=False, ln=1, align='C')        
-    pdf.cell(0, 2, 'DE POZOS DE AGUA', border=False, ln=1, align='C')
+    pdf.cell(0, 2, 'DE POZOS DE AGUA.', border=False, ln=1, align='C')
     pdf.set_font('helvetica', 'B', 12)
     pdf.cell(0, 20, 'REPORTE DE FALLAS EN POZOS DE AGUA', border=False, align='C')        
     pdf.set_font('helvetica', '', 12)
